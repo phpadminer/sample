@@ -1,4 +1,4 @@
-·@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -8421,6 +8421,14 @@ p {
   color: #fff;
 }
 
+#logout {
+  cursor: default;
+}
+
+#logout:hover {
+  background-color: transparent;
+}
+
 /* footer */
 
 footer {
@@ -8504,3 +8512,22 @@ section.user_info h1 {
   max-width: 50px;
   border-radius: 50%;
 }
+
+/* forms */
+
+input,
+textarea,
+select,
+.uneditable-input {
+  border: 1px solid #bbb;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+
+.panel {
+  margin-top: 50px;
+}
+
