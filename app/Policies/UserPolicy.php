@@ -18,9 +18,12 @@ class UserPolicy
     {
         //
     }
-
+    /*
+    *用户编辑/更新安全策略
+    */
     public function update(User $currentUser, User $user)
     {
+        //当前登录用户只能修改自己的信息
         return $currentUser->id === $user->id;
     }
 

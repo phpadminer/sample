@@ -17,6 +17,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        //如果检测到当前用户已经登陆 直接跳转到首页
         if (Auth::guard($guard)->check()) {
             session()->flash('info','您已经登录，无需再次操作！');
             return redirect('/');
