@@ -16,6 +16,7 @@ class UserTableSeeder extends Seeder
         $users = factory(User::class)->times(50)->make();
         User::insert($users->makeVisible(['password', 'remember_token'])->toArray());
 
+        //上面的部分已经是执行批量插入功能，下面是修改数据库中的第一条数据
         $user = User::find(1);
         $user->name = 'Aufree';
         $user->email = 'aufree@yousails.com';

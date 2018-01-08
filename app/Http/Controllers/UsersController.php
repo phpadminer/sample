@@ -44,7 +44,11 @@ class UsersController extends Controller
     */
     public function show(User $user)
     {
-        return view('users.show',compact('user'));
+        // 查出该用户关联的微博
+        $statuses = $user->statuses()
+                           ->orderBy('created_at', 'desc')
+                           ->paginate(30);
+        return view('users.show', compact('user', 'statuses'));
     }
 
     /**
@@ -151,4 +155,6 @@ class UsersController extends Controller
         session()->flash('success', '恭喜你，激活成功！');
         return redirect()->route('users.show', [$user]);
     }
+
+    public
 }
