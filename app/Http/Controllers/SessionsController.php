@@ -38,6 +38,7 @@ class SessionsController extends Controller
        // 如果验证信息和服务器中的数据一致就让他登录
        // 或者如果这个用户已经选择了记住我 的功能 就直接登录
        if (Auth::attempt($credentials, $request->has('remember')))
+       {
             //如果用户没有被激活，那么让他点击邮箱中的激活码激活！
            if(Auth::user()->activated){
                session()->flash('success', '欢迎回来！');
@@ -45,7 +46,7 @@ class SessionsController extends Controller
                return redirect()->intended(route('users.show', [Auth::user()]));
            }else{
                Auth::logout();
-               session->flash('warning','你的账号未激活，请检查邮箱中的注册邮件进行激活。');
+               session()->flash('warning','你的账号未激活，请检查邮箱中的注册邮件进行激活。');
                return redirect('/');
            }
 
